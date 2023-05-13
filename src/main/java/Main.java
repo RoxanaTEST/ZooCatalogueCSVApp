@@ -19,13 +19,8 @@ public class Main {
         for (String[] record : records) {
             System.out.println(String.join(", ", record));
         }
-
-        System.out.println("\nAdding new animals if they don't exist");
-        csvOperations.create(new Animal("Dog", "Tommy"));
-        csvOperations.create(new Animal("Cat", "Polly"));
+        System.out.println("\nAdding new animals ");
         csvOperations.create(new Animal("Cow", "Daisy"));
-        csvOperations.create(new Animal("Horse", "Star"));
-        csvOperations.create(new Animal("Monkey", "Cita"));
         // Print the new list
         records = csvOperations.readAll();
         for (String[] record : records) {
@@ -33,7 +28,8 @@ public class Main {
         }
 
         System.out.println("\nUpdating animal");
-        csvOperations.update(new Animal("Cow", "Bety"));
+        csvOperations.update(new Animal("Dog", "Tommy"));
+
         // Print the new list
         records = csvOperations.readAll();
         for (String[] record : records) {
