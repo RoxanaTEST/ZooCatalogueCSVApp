@@ -20,7 +20,7 @@ public class CsvOperations {
 
     public List<String[]> readAll() throws IOException, CsvException {
         try (CSVReader reader = new CSVReaderBuilder(Files.newBufferedReader(csvFilePath))
-                .withSkipLines(0) // Skip header row
+                .withSkipLines(0)
                 .build()) {
             return reader.readAll();
         }
@@ -42,14 +42,14 @@ public class CsvOperations {
         List<String[]> records = readAll();
         int firstNameIndex = 0;
 
-        for (int i = 1; i < records.size(); i++) { // Start at index 1 to skip header row
+        for (int i = 1; i < records.size(); i++) {
             String[] record = records.get(i);
             if (record.length > firstNameIndex && record[firstNameIndex].equals(animalType)) {
                 return i;
             }
         }
 
-        return -1; // Return -1 if no match is found
+        return -1;
     }
 
 
@@ -83,7 +83,7 @@ public class CsvOperations {
         if (!Files.exists(csvFilePath)) {
             Files.createFile(csvFilePath);
             try (CSVWriter writer = new CSVWriter(Files.newBufferedWriter(csvFilePath))) {
-                writer.writeNext(new String[]{"Animal", "Name"}); // Write header row
+                writer.writeNext(new String[]{"Animal", "Name"});
             }
         }
     }
